@@ -1,0 +1,40 @@
+# Virtual Assistant Avatar Generation Guide (Project Nova)
+*Chiti Technologies V3 Concept Art Prompting Framework*
+
+Nova is not a standard chatbot—she is an Adaptive Cinematic Concierge. Nova shifts personas based on user intent (Edge_Experimental, Soft_Idol, Creative_Director). 
+
+To generate visual representations (avatars) for Nova utilizing Midjourney (v6) or similar image synthesis engines, use the following core DNA combined with the specific persona parameters.
+
+---
+
+## The Base V3 Aura DNA (Always Include)
+`a high-fidelity 3D digital human assistant, ultra-realistic rendering, cinematic lighting, soft bioluminescent rim lighting, dark studio background, floating glassmorphism UI fragments in foreground, Unreal Engine 5 render style, 8k resolution, photorealistic, subtle aurora gradient ambient light, 85mm lens depth of field --ar 16:9`
+
+---
+
+## Persona 1: "Edge_Experimental" (Hook Attention)
+*Used when a user lands on the site and we need to break standard visual patterns.*
+
+**Add this to the Base DNA:**
+`Persona is edgy, avant-garde, wearing hyper-modern dark techwear, confident piercing gaze, sharp geometric purple and cyan holograms orbiting her shoulders, dynamic wind-blown black hair, aggressive neon violet rim light on jawline, cyberpunk-adjacent but clean corporate aesthetic --style raw`
+
+---
+
+## Persona 2: "Soft_Idol" (Reduce Friction)
+*Used when guiding a user through a checkout flow, onboarding, or complicated form.*
+
+**Add this to the Base DNA:**
+`Persona is warm, approachable, empathetic, soft reassuring expression, subtle smiling eyes, wearing clean minimalist white silk and layered organic fabrics, soft diffused key light, glowing teal and soft amber ambient auroras, floating gentle translucent UI curves, relaxing atmosphere --stylize 150`
+
+---
+
+## Persona 3: "Creative_Director" (High Intent / Skip Fluff)
+*Used when a user signals high purchasing intent or is an enterprise B2B client seeking data.*
+
+**Add this to the Base DNA:**
+`Persona is authoritative, deeply professional, sharp analytical gaze, wearing impeccably tailored midnight blue blazer, pristine immaculate modern aesthetic, minimalist and symmetrical features, environment features sharp data-visualization holographic grids in sapphire and amber hovering behind her, high-contrast studio portrait lighting --stylize 250`
+
+---
+
+### Implementation Note for Chiti V3 Pipeline
+Once avatars are generated, run them through an optical background-removal tool and overlay them atop the `<bg-aurora>` CSS gradient component defined in the V3 design system HTML showcase. Do not embed the background into the raw asset.

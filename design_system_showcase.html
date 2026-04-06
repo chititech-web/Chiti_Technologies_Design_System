@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chiti Technologies | Unified Design System</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;700&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==========================================
+           1. DESIGN TOKENS (CSS Variables)
+        ========================================== */
+        :root {
+            /* Colors */
+            --bg-dark: hsl(220, 10%, 4%);
+            --surface-dark: hsl(220, 10%, 8%);
+            --surface-dark-elevated: hsl(220, 10%, 12%);
+            
+            --primary-violet: hsl(260, 100%, 65%);
+            --secondary-cyan: hsl(190, 100%, 50%);
+            --accent-pink: hsl(330, 100%, 60%);
+            
+            --text-main: hsl(0, 0%, 98%);
+            --text-muted: hsl(220, 10%, 60%);
+            
+            /* Glassmorphism */
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            
+            /* Typography */
+            --font-heading: 'Outfit', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            
+            /* Layout & Spacing */
+            --sys-radius-sm: 6px;
+            --sys-radius-md: 12px;
+            --sys-radius-lg: 24px;
+        }
+
+        /* ==========================================
+           2. BASE STYLES
+        ========================================== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Animated Background Gradients to simulate Aurora */
+        .bg-aurora {
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 50% 50%, rgba(124, 58, 237, 0.15) 0%, rgba(0,0,0,0) 40%),
+                        radial-gradient(circle at 80% 20%, rgba(0, 212, 255, 0.1) 0%, rgba(0,0,0,0) 30%);
+            z-index: -1;
+            pointer-events: none;
+            animation: pulse-aurora 20s infinite alternate linear;
+        }
+
+        @keyframes pulse-aurora {
+            0% { transform: scale(1) translate(0, 0); }
+            100% { transform: scale(1.1) translate(-2%, 5%); }
+        }
+
+        /* Layout Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Typography Elements */
+        h1, h2, h3, h4 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        h1 { font-size: 3.5rem; margin-bottom: 0.5rem; }
+        h2 { font-size: 2.5rem; margin-bottom: 2rem; color: #fff; }
+        
+        .section-label {
+            font-family: var(--font-mono);
+            color: var(--primary-violet);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+            background: rgba(124, 58, 237, 0.1);
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+        }
+
+        p { color: var(--text-muted); margin-bottom: 1.5rem; }
+
+        .system-section {
+            margin-bottom: 6rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        /* ==========================================
+           3. TOKENS SHOWCASE (Colors & Type)
+        ========================================== */
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .color-swatch {
+            background: var(--surface-dark);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--sys-radius-md);
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .color-preview {
+            height: 80px;
+            border-radius: var(--sys-radius-sm);
+        }
+
+        .code-snippet {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* ==========================================
+           4. COMPONENTS
+        ========================================== */
+        .component-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .component-box {
+            background: var(--surface-dark);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--sys-radius-md);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1.5rem;
+            position: relative;
+        }
+
+        /* --- Buttons --- */
+        .btn {
+            font-family: var(--font-body);
+            font-weight: 500;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--sys-radius-sm);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Spring-like */
+            font-size: 0.95rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+        }
+
+        .btn-cinematic {
+            background: linear-gradient(135deg, var(--primary-violet), var(--secondary-cyan));
+            color: #fff;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-cinematic::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: inherit;
+            filter: blur(10px);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .btn-cinematic:hover {
+            transform: scale(1.05) translateY(-2px);
+        }
+        .btn-cinematic:hover::before {
+            opacity: 0.7;
+        }
+
+        .btn-glass {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            color: var(--text-main);
+            backdrop-filter: blur(12px);
+        }
+
+        .btn-glass:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .btn-saas {
+            background: var(--surface-dark-elevated);
+            color: var(--text-main);
+            height: 32px;
+            padding: 0 1rem;
+            font-size: 0.85rem;
+            border-radius: 4px;
+            border: 1px solid var(--glass-border);
+            transition: all 0.2s ease;
+        }
+
+        .btn-saas:hover {
+            border-color: var(--text-muted);
+        }
+
+        /* --- Input Fields --- */
+        .input-group {
+            position: relative;
+            width: 100%;
+        }
+
+        .chiti-input {
+            width: 100%;
+            background: rgba(0,0,0,0.2);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--sys-radius-sm);
+            padding: 1rem 1rem 0.5rem 1rem;
+            color: var(--text-main);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .chiti-label {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 1rem;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        .chiti-input:focus,
+        .chiti-input:not(:placeholder-shown) {
+            border-color: var(--primary-violet);
+            box-shadow: 0 0 0 1px var(--primary-violet) inset;
+        }
+
+        .chiti-input:focus + .chiti-label,
+        .chiti-input:not(:placeholder-shown) + .chiti-label {
+            top: 0.5rem;
+            font-size: 0.7rem;
+            color: var(--primary-violet);
+        }
+
+        /* --- Chiti Card (3D Physics Simulation) --- */
+        .chiti-card {
+            width: 100%;
+            padding: 2rem;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--sys-radius-lg);
+            backdrop-filter: blur(12px);
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+            transform: perspective(1000px);
+            transition: transform 0.1s;
+            cursor: default;
+        }
+
+        .chiti-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Internal spotlight effect generated by JS */
+        .card-spotlight {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.15) 0%, rgba(0,0,0,0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            mix-blend-mode: screen;
+            z-index: 0;
+            transform: translate(-50%, -50%);
+        }
+
+        .chiti-card:hover .card-spotlight {
+            opacity: 1;
+        }
+
+        .card-content {
+            position: relative;
+            z-index: 2;
+            transform: translateZ(30px); /* Pushes content forward for 3D effect */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-aurora"></div>
+
+    <div class="container">
+        
+        <header style="margin-bottom: 5rem; text-align: center;">
+            <div class="section-label">v1.0.0</div>
+            <h1>Unified Design System</h1>
+            <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto;">The cinematic, physics-driven UI framework powering Chiti Technologies. Designed for Enterprise, Scaled for Commerce.</p>
+        </header>
+
+        <!-- TOKENS: COLORS -->
+        <section class="system-section">
+            <h2 class="section-title"><span class="section-label">Tokens.01</span> Color Architecture</h2>
+            <p>Rich, tailored HSL values utilizing deep lighting contexts rather than standard flat hex colors.</p>
+            
+            <div class="color-grid">
+                <div class="color-swatch">
+                    <div class="color-preview" style="background: var(--bg-dark); border: 1px solid var(--glass-border);"></div>
+                    <div>
+                        <div style="font-weight: 600; font-family: var(--font-heading);">Chiti Dark</div>
+                        <div class="code-snippet">hsl(220, 10%, 4%)</div>
+                    </div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-preview" style="background: var(--primary-violet);"></div>
+                    <div>
+                        <div style="font-weight: 600; font-family: var(--font-heading);">Primary Violet</div>
+                        <div class="code-snippet">hsl(260, 100%, 65%)</div>
+                    </div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-preview" style="background: var(--secondary-cyan);"></div>
+                    <div>
+                        <div style="font-weight: 600; font-family: var(--font-heading);">Secondary Cyan</div>
+                        <div class="code-snippet">hsl(190, 100%, 50%)</div>
+                    </div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-preview" style="background: var(--accent-pink);"></div>
+                    <div>
+                        <div style="font-weight: 600; font-family: var(--font-heading);">Accent Pink</div>
+                        <div class="code-snippet">hsl(330, 100%, 60%)</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TOKENS: TYPOGRAPHY -->
+        <section class="system-section">
+            <h2 class="section-title"><span class="section-label">Tokens.02</span> Typography</h2>
+            <p>A hierarchical type system built to scale from cinematic marketing down to dense tabular data.</p>
+            
+            <div class="component-box" style="gap: 2rem;">
+                <div>
+                    <div class="code-snippet" style="margin-bottom: 0.5rem;">Font: Outfit (Headings)</div>
+                    <h1 style="font-size: 3rem;">Cinematic Display Text</h1>
+                </div>
+                <div>
+                    <div class="code-snippet" style="margin-bottom: 0.5rem;">Font: Inter (Body)</div>
+                    <p style="font-size: 1rem; max-width: 800px; color: var(--text-main);">Hyper-legible interface text used for standard reading, descriptions, and UI controls. Inter provides excellent clarity across all viewport sizes and varying densities.</p>
+                </div>
+                <div>
+                    <div class="code-snippet" style="margin-bottom: 0.5rem;">Font: JetBrains Mono (Code/Technical)</div>
+                    <div style="font-family: var(--font-mono); color: var(--secondary-cyan); font-size: 0.9rem;">
+                        const buildCinematicExperience = (ui) => ui.render();
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMPONENTS: BUTTONS -->
+        <section class="system-section">
+            <h2 class="section-title"><span class="section-label">Components.01</span> Interactive Controls</h2>
+            <p>Buttons driven by spring physics to provide tactile, weighty responses.</p>
+            
+            <div class="component-grid">
+                <div class="component-box">
+                    <h3 style="font-size:1.2rem; color:var(--text-main);">Cinematic CTA</h3>
+                    <p style="font-size: 0.85rem;">Used for major conversion events. Emits an outer glow on hover.</p>
+                    <button class="btn btn-cinematic">Initialize Sequence</button>
+                </div>
+                <div class="component-box">
+                    <h3 style="font-size:1.2rem; color:var(--text-main);">Glass CTA</h3>
+                    <p style="font-size: 0.85rem;">Secondary actions requiring less prominence but retaining premium feel.</p>
+                    <button class="btn btn-glass">View Documentation</button>
+                </div>
+                <div class="component-box">
+                    <h3 style="font-size:1.2rem; color:var(--text-main);">SaaS Action</h3>
+                    <p style="font-size: 0.85rem;">High-density buttons for data tables and enterprise dashboards.</p>
+                    <button class="btn btn-saas">Export CSV</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMPONENTS: INPUTS -->
+        <section class="system-section">
+            <h2 class="section-title"><span class="section-label">Components.02</span> Forms & Inputs</h2>
+            <p>Smooth, floating-label inputs for high-end conversion flows.</p>
+            
+            <div class="component-box" style="max-width: 500px;">
+                <div class="input-group">
+                    <input type="text" class="chiti-input" id="demo-input" placeholder=" ">
+                    <label for="demo-input" class="chiti-label">Workspace Name</label>
+                </div>
+                <div class="input-group">
+                    <input type="email" class="chiti-input" id="demo-email" placeholder=" ">
+                    <label for="demo-email" class="chiti-label">Corporate Email Address</label>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMPONENTS: CARDS -->
+        <section class="system-section">
+            <h2 class="section-title"><span class="section-label">Components.03</span> The "Chiti Card"</h2>
+            <p>Hover over the card to experience our signature physics-based 3D tilt and internal radial spotlight.</p>
+            
+            <div class="component-grid">
+                <div class="chiti-card" id="tiltCard">
+                    <div class="card-spotlight" id="spotlight"></div>
+                    <div class="card-content">
+                        <div class="section-label">Pro Feature</div>
+                        <h3 style="color: #fff; margin-bottom: 1rem; font-size: 1.5rem;">Physics Driven Containers</h3>
+                        <p>This container tracks your mouse coordinates to calculate dynamic rotation offsets and updates an internal light source in real-time. It completely avoids rigid DOM behavior.</p>
+                        <button class="btn btn-glass" style="margin-top: 1rem;">Experience Now</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Script for 3D Card Physics Physics -->
+    <script>
+        const card = document.getElementById('tiltCard');
+        const spotlight = document.getElementById('spotlight');
+
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            // Calculate mouse position relative to card center
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            // Spotlight positioning
+            spotlight.style.left = `${x}px`;
+            spotlight.style.top = `${y}px`;
+
+            // Calculate rotation (max 10 degrees)
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const rotateX = ((y - centerY) / centerY) * -6; // Negative so mouse pushes down
+            const rotateY = ((x - centerX) / centerX) * 6;
+
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg)`;
+            spotlight.style.opacity = '0';
+        });
+
+        card.addEventListener('mouseenter', () => {
+             card.style.transition = 'transform 0.1s ease-out';
+        });
+    </script>
+</body>
+</html>

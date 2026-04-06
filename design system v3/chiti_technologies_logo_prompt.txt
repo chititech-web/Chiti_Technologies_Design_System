@@ -1,0 +1,42 @@
+# Chiti Technologies — Master Logo Prompt Guide
+*Part of the Chiti Technologies V3 Ecosystem*
+
+## The Philosophical Foundation
+In Indian philosophy (specifically Kashmir Shaivism and Vedanta), the word **"Chiti" (चिति)** translates to **Pure Consciousness, Supreme Intelligence, or the Universal Life Force**. It is the fundamental energy that perceives and connects everything.
+
+For "Chiti Technologies", the logo must symbolize the intersection of **ancient cosmic intelligence** and **cutting-edge, premium digital infrastructure**. It should feel alive, intelligent, and precise—matching the V3 Design System’s cinematic aura.
+
+Below are meticulously crafted text prompts designed for Midjourney v6 (or similar high-end image synthesis models) to conceptualize this logo.
+
+---
+
+## 1. Concept Option: "The Spark of Consciousness" (Abstract / Energetic)
+*This option focuses on the "alive" nature of Chiti—an intelligent spark of energy that powers modern systems.*
+
+**Prompt:**
+`minimalist tech company logo design for "Chiti Technologies", a solitary abstract spark of luminous energy suspended inside a flawless geometric sphere. The spark resembles an intelligent neural node or a single star. Monochromatic base with a subtle electric violet and cyan aura glowing from within. Premium corporate identity, negative space, vector aesthetic, dark background, cinematic lighting, flat but with deep luminescence, Paul Rand style geometry meets modern web3 SaaS branding --no text --v 6.0 --ar 1:1`
+
+---
+
+## 2. Concept Option: "The Neural Nexus" (Geometric / Monogram)
+*This option plays with the letter 'C' intertwining heavily with the concept of a neural network or a technological eye (awareness).*
+
+**Prompt:**
+`modern sleek logo mark for an elite software agency, the letter C formed by intersecting laser-thin orbital rings, representing cosmic awareness and digital infrastructure. Subtle glassmorphism texturing. Highly symmetrical, incredibly minimalist, sharp clean lines. Primary colors are deep obsidian and electric violet. Premium, cutting-edge, tech startup branding, isolated on black background, vector style, UI/UX agency standard --v 6.0 --ar 1:1`
+
+---
+
+## 3. Concept Option: "The Fluid Singularity" (Organic / Cinematic)
+*This explores the philosophical definition of "Chiti" as flowing, boundless consciousness combined with Chiti's signature V3 physics-driven UI.*
+
+**Prompt:**
+`high-end modern logo, abstract fluid droplet of liquid light merging with a hard-edge geometric grid, representing pure consciousness meeting digital structure. Neon violet and deep cyan gradient. Minimalist silhouette but with intense inner depth and soft 3D rim lighting. Suggests intelligence, adaptive technology, and premium design. Dark mode aesthetic, hyper-clean vector shapes, Dribbble trending, enterprise SaaS logo --no text --v 6.0 --style raw --ar 1:1`
+
+---
+
+## 4. Typography / Font Recommendations (Post-Generation)
+When applying text next to the AI-generated logo mark:
+- Keep the logomark on the left, text on the right.
+- Use the V3 Design System base font for the brand name: **Outfit** (ExtraBold or Black weight) for the word "CHITI".
+- Use **Inter** (Regular, widely tracked) for the word "TECHNOLOGIES" below it.
+- **Color:** "CHITI" in stark `#F9FAFB` (White), "TECHNOLOGIES" in your secondary `--text-muted` tone to establish visual hierarchy.
